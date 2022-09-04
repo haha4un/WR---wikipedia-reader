@@ -24,5 +24,17 @@ class start : AppCompatActivity() {
             startActivity(i)
         }
 
+        var searchView: EditText = findViewById(R.id.Edittxt)
+        searchView.setMaxLines(1)
+        searchView.setHorizontallyScrolling(false)
+
+        var searchButton: Button = findViewById(R.id.start_search)
+        searchButton.setOnClickListener()
+        {
+            var i: Intent = Intent(this, MainActivity::class.java)
+            i.putExtra("tog", "https://www.google.com/search?q=${searchView.text}")
+            startActivity(i)
+        }
+
     }
 }

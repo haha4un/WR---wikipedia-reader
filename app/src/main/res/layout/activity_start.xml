@@ -18,6 +18,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:hint="haha4un's project"
+        android:inputType="text"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/start_search"
         app:layout_constraintStart_toStartOf="parent"

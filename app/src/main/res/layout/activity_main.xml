@@ -32,7 +32,7 @@
         android:layout_marginBottom="5dp"
         android:ems="10"
         android:hint="search"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:text=""
         android:textColor="#313131"
         android:textColorHint="#525252"

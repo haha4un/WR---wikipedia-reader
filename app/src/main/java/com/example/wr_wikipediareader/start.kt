@@ -1,6 +1,7 @@
 package com.example.wr_wikipediareader
 
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -10,11 +11,14 @@ class start : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
 
+        var  base: SQLiteDatabase = baseContext.openOrCreateDatabase("urls.db", MODE_PRIVATE, null)
+        base.execSQL("CREATE TABLE IF NOT EXISTS urls (url TEXT NOT NULL)")
+        var help = dbhelp()
+
         var goto: Button = findViewById(R.id.go)
         var spinner: Spinner = findViewById(R.id.spinner)
-        var selectedSites: ArrayList<String> = arrayListOf("https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0", "https://naked-science.ru/","https://www.nature.com/")
 
-        var  placeadapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, selectedSites)
+        var  placeadapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, help.tableToarr(base, "urls"))
         spinner.adapter = placeadapter
 
         goto.setOnClickListener()
@@ -25,8 +29,7 @@ class start : AppCompatActivity() {
         }
 
         var searchView: EditText = findViewById(R.id.Edittxt)
-        searchView.setMaxLines(1)
-        searchView.setHorizontallyScrolling(false)
+        //searchView.setMaxLines(1)
 
         var searchButton: Button = findViewById(R.id.start_search)
         searchButton.setOnClickListener()
@@ -36,5 +39,13 @@ class start : AppCompatActivity() {
             startActivity(i)
         }
 
+        var del: Button = findViewById(R.id.del)
+        del.setOnClickListener()
+        {
+            help.delUrl(base, spinner.selectedItem.toString(), "urls")
+
+            var  placeadapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, help.tableToarr(base, "urls"))
+            spinner.adapter = placeadapter
+        }
     }
 }

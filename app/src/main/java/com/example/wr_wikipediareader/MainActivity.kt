@@ -2,14 +2,19 @@ package com.example.wr_wikipediareader
 
 import android.annotation.TargetApi
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,15 +24,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        getSupportActionBar()?.hide()
 
         w = findViewById(R.id.web)
         var web: WebView = findViewById(R.id.web)
         web.settings.javaScriptEnabled = true
 
         var ok: Button = findViewById(R.id.ok)
-        var back: Button = findViewById(R.id.back)
-        var reload: Button = findViewById(R.id.reload)
 
         var txt: EditText = findViewById(R.id.what)
 
@@ -36,29 +38,39 @@ class MainActivity : AppCompatActivity() {
         w?.webViewClient = MyWebViewClient()
         web.webViewClient = MyWebViewClient()
         web.settings.javaScriptEnabled = true
-
-
         ok.setOnClickListener()
         {
             search = txt.text.toString()
             goToSearch(search.toString(), web)
         }
-        back.setOnClickListener()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        var inflater: MenuInflater = getMenuInflater()
+        inflater.inflate(R.menu.for_mainact, menu)
+        return true }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId)
         {
-            if (w?.canGoBack() == true) {
-                w?.goBack()
+            R.id.back ->
+                if (w?.canGoBack() == true) {
+                    w?.goBack()
+                }
+            R.id.reload -> w?.reload()
+            R.id.toHome -> {
+                var i: Intent = Intent(this, com.example.wr_wikipediareader.start::class.java)
+                startActivity(i)
+            }
+            R.id.favourite ->
+            {
+                var help = dbhelp()
+                var  base: SQLiteDatabase = baseContext.openOrCreateDatabase("urls.db", MODE_PRIVATE, null)
+                if (!help.createUrl(base, w?.url.toString(), "urls"))
+                    Toast.makeText(this, "Запись уже есть", Toast.LENGTH_LONG)
             }
         }
-        reload.setOnClickListener()
-        {
-            w?.reload()
-        }
-        var toHome: Button = findViewById(R.id.toHome)
-        toHome.setOnClickListener()
-        {
-            var i: Intent = Intent(this, com.example.wr_wikipediareader.start::class.java)
-            startActivity(i)
-        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun goToSearch(search: String, w: WebView)

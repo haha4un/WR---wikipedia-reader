@@ -8,19 +8,20 @@ import android.widget.Toast.LENGTH_LONG
 
 class dbhelp {
 
-    fun createUrl(db: SQLiteDatabase, value: String, table: String)
+    fun createUrl(db: SQLiteDatabase, value: String, table: String) : Boolean
     {
-        var cursor: Cursor = db.rawQuery("SELECT * FROM $table where url = $value", null)
+        var cursor: Cursor = db.rawQuery("SELECT * FROM $table where url = '$value'", null)
         var str: String = value
 
         while(cursor.moveToNext()) {
 
             if (str == cursor.getString(0))
             {
-                return
+                return false
             }
         }
-        db.execSQL("INSERT INTO $table VALUES ($value)")
+        db.execSQL("INSERT INTO $table VALUES ('$value')")
+        return true
     }
 
     fun delUrl(db: SQLiteDatabase, value: String, table: String) {
@@ -36,6 +37,8 @@ class dbhelp {
         while(cursor.moveToNext()) {
             arr += cursor.getString(0)
         }
+        arr += "https://github.com/haha4un"
+        arr += "https://t.me/haha4un_projects"
         return arr
     }
 }

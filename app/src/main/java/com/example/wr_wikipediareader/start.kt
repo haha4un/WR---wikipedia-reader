@@ -10,9 +10,10 @@ class start : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
+        getSupportActionBar()?.hide()
 
         var  base: SQLiteDatabase = baseContext.openOrCreateDatabase("urls.db", MODE_PRIVATE, null)
-        base.execSQL("CREATE TABLE IF NOT EXISTS urls (url TEXT NOT NULL)")
+        base.execSQL("CREATE TABLE IF NOT EXISTS urls (url TEXT NOT NULL);")
         var help = dbhelp()
 
         var goto: Button = findViewById(R.id.go)

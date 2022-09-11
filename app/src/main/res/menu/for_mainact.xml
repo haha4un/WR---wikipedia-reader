@@ -12,6 +12,6 @@
         android:title="🏠"
         app:showAsAction="always"></item>
     <item android:id="@+id/favourite"
-        android:title="⭐"
+        android:title="★"
         app:showAsAction="ifRoom"></item>
 </menu>

@@ -19,7 +19,7 @@ class start : AppCompatActivity() {
         var goto: Button = findViewById(R.id.go)
         var spinner: Spinner = findViewById(R.id.spinner)
 
-        var  placeadapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, help.tableToarr(base, "urls"))
+        var  placeadapter = ArrayAdapter(this, R.layout.row,R.id.newS, help.tableToarr(base, "urls"))
         spinner.adapter = placeadapter
 
         goto.setOnClickListener()
@@ -45,7 +45,7 @@ class start : AppCompatActivity() {
         {
             help.delUrl(base, spinner.selectedItem.toString(), "urls")
 
-            var  placeadapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, help.tableToarr(base, "urls"))
+            var  placeadapter = ArrayAdapter(this,R.layout.row,R.id.newS, help.tableToarr(base, "urls"))
             spinner.adapter = placeadapter
         }
     }

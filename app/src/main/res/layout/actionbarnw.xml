@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/what"
+        android:inputType="textFilter"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintHorizontal_weight="3"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/back"
+        android:title="◀"
+        app:showAsAction="always"
+        tools:ignore="MissingConstraints"></Button>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/reload"
+        android:title="🔄"
+        app:showAsAction="always"
+        tools:ignore="MissingConstraints"></Button>
+    <Button   android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toHome"
+        android:title="🏠"
+        app:showAsAction="always"
+        tools:ignore="MissingConstraints"></Button>
+    <Button   android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/favourite"
+        android:title="★"
+        app:showAsAction="ifRoom"
+        tools:ignore="MissingConstraints"></Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,7 +38,7 @@ class dbhelp {
             arr += cursor.getString(0)
         }
         arr += "https://github.com/haha4un"
-        arr += "https://t.me/haha4un_projects"
+        arr += "https://www.google.com/"
         return arr
     }
 }

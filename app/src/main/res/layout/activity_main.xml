@@ -12,50 +12,13 @@
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/what" />
-
-    <EditText
-        android:id="@+id/what"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
-        android:hint="Найти"
-        android:inputType="text"
-        android:text=""
-        android:textColor="#313131"
-        android:textColorHint="#525252"
-        app:layout_constraintBottom_toTopOf="@+id/web"
-        app:layout_constraintEnd_toStartOf="@+id/ok"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        android:text="🆗"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/web"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/what"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="#FFFFFF" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

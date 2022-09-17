@@ -6,38 +6,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/what"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:imeOptions="actionSearch"
         android:inputType="textFilter"
-        tools:ignore="MissingConstraints"
-        app:layout_constraintHorizontal_weight="3"/>
+        app:layout_constraintEnd_toStartOf="@+id/back"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/back"
-        android:title="◀"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:text="◀"
+        app:layout_constraintEnd_toStartOf="@+id/reload"
+        app:layout_constraintStart_toEndOf="@+id/what"
         app:showAsAction="always"
         tools:ignore="MissingConstraints"></Button>
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/reload"
-        android:title="🔄"
-        app:showAsAction="always"
-        tools:ignore="MissingConstraints"></Button>
-    <Button   android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:id="@+id/toHome"
-        android:title="🏠"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:text="🔄"
+        app:layout_constraintEnd_toStartOf="@+id/toHome"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toTopOf="parent"
         app:showAsAction="always"
         tools:ignore="MissingConstraints"></Button>
-    <Button   android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:id="@+id/favourite"
-        android:title="★"
-        app:showAsAction="ifRoom"
+
+    <Button
+        android:id="@+id/toHome"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:text="🏠"
+        app:layout_constraintEnd_toStartOf="@+id/favourite"
+        app:layout_constraintStart_toEndOf="@+id/reload"
+        app:layout_constraintTop_toTopOf="parent"
+        app:showAsAction="always"
         tools:ignore="MissingConstraints"></Button>
+
+    <Button
+        android:id="@+id/favourite"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="★"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:showAsAction="ifRoom"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="0dp"></Button>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

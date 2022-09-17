@@ -84,53 +84,10 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
-    //    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-//        //replaces the default 'Back' button action
-//        if (keyCode == KeyEvent.KEYCODE_ENTER) {
-//            goToSearch(wht?.text.toString(), w!!)
-//        }
-//        return true
-//    }
-//    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-//        if (keyCode == KeyEvent.KEYCODE_ENTER)
-//             goToSearch(wht?.text.toString(), w!!)
-//        return super.onKeyUp(keyCode, event)
-//    }
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        var inflater: MenuInflater = getMenuInflater()
-//        inflater.inflate(R.menu.for_mainact, menu)
-//        return true }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when(item.itemId)
-//        {
-//            R.id.back ->
-//                if (w?.canGoBack() == true) {
-//                    w?.goBack()
-//                }
-//            R.id.reload -> w?.reload()
-//            R.id.toHome -> {
-//                var i: Intent = Intent(this, com.example.wr_wikipediareader.start::class.java)
-//                startActivity(i)
-//            }
-//            R.id.favourite ->
-//            {
-//                var help = dbhelp()
-//                var  base: SQLiteDatabase = baseContext.openOrCreateDatabase("urls.db", MODE_PRIVATE, null)
-//                if (!help.createUrl(base, w?.url.toString(), "urls"))
-//                    Toast.makeText(this, "Запись уже есть", Toast.LENGTH_LONG)
-//            }
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
-
     fun goToSearch(search: String, w: WebView)
     {
         w.loadUrl("https://www.google.com/search?q=$search")
     }
-
-
     override fun onBackPressed() {
         if (w?.canGoBack() == true) {
             w?.goBack()

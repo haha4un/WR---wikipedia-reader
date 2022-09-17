@@ -18,6 +18,7 @@ class start : AppCompatActivity() {
 
         var goto: Button = findViewById(R.id.go)
         var spinner: Spinner = findViewById(R.id.spinner)
+        spinner.setPrompt("Bookmarks")
 
         var  placeadapter = ArrayAdapter(this, R.layout.row,R.id.newS, help.tableToarr(base, "urls"))
         spinner.adapter = placeadapter

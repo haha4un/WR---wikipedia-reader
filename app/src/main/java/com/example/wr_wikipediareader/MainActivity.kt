@@ -86,7 +86,10 @@ class MainActivity : AppCompatActivity() {
     }
     fun goToSearch(search: String, w: WebView)
     {
-        w.loadUrl("https://www.google.com/search?q=$search")
+        if (search.startsWith("https://"))
+            w.loadUrl(search)
+        else
+            w.loadUrl("https://www.google.com/search?q=$search")
     }
     override fun onBackPressed() {
         if (w?.canGoBack() == true) {

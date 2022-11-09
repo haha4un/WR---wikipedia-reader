@@ -4,6 +4,8 @@ import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.View
 import android.widget.*
 
 class start : AppCompatActivity() {
@@ -31,6 +33,16 @@ class start : AppCompatActivity() {
         }
 
         var searchView: EditText = findViewById(R.id.Edittxt)
+
+        searchView.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if (keyCode == KeyEvent.KEYCODE_ENTER)
+                {
+                    makeIntent(searchView.text.toString())
+                }
+                return false
+            }
+        })
         //searchView.setMaxLines(1)
 
         var searchButton: Button = findViewById(R.id.start_search)
@@ -49,5 +61,16 @@ class start : AppCompatActivity() {
             var  placeadapter = ArrayAdapter(this,R.layout.row,R.id.newS, help.tableToarr(base, "urls"))
             spinner.adapter = placeadapter
         }
+    }
+    fun makeIntent(value: String)
+    {
+        var i: Intent = Intent(this, MainActivity::class.java)
+
+        if (value.startsWith("https://"))
+            i.putExtra("tog", value)
+        else
+            i.putExtra("tog", "https://www.google.com/search?q=${value}")
+
+        startActivity(i)
     }
 }

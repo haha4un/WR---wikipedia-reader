@@ -39,6 +39,7 @@ class dbhelp {
         }
         arr += "https://github.com/haha4un"
         arr += "https://www.google.com/"
+        arr += " "
         return arr
     }
 }

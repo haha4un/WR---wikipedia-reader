@@ -1,5 +1,6 @@
 package com.example.wr_wikipediareader
 
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     var w: WebView ?= null;
     var search: String ?= "f"
 
+    @SuppressLint("SetJavaScriptEnabled", "CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,16 +39,21 @@ class MainActivity : AppCompatActivity() {
         w = findViewById(R.id.web)
         var web: WebView = findViewById(R.id.web)
         web.settings.javaScriptEnabled = true
-
 //        var ok: Button = findViewById(R.id.ok)
 //        var txt: EditText = findViewById(R.id.what)
 
-        var start = intent.getSerializableExtra("tog").toString()
-        w?.loadUrl(start)
-        w?.webViewClient = MyWebViewClient()
-        web.webViewClient = MyWebViewClient()
-        web.settings.javaScriptEnabled = true
-        w?.settings?.javaScriptEnabled = true
+        try {
+            var start = intent.getSerializableExtra("tog").toString()
+            w?.loadUrl(start)
+            w?.webViewClient = MyWebViewClient()
+            web.webViewClient = MyWebViewClient()
+            web.settings.javaScriptEnabled = true
+            w?.settings?.javaScriptEnabled = true
+        }
+        catch (E:Exception)
+        {
+            Toast.makeText(this, "$E", Toast.LENGTH_LONG).show()
+        }
 //        ok.setOnClickListener()
 //        {
 //            search = txt.text.toString()
@@ -72,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             var help = dbhelp()
                 var  base: SQLiteDatabase = baseContext.openOrCreateDatabase("urls.db", MODE_PRIVATE, null)
                 if (!help.createUrl(base, w?.url.toString(), "urls"))
-                    Toast.makeText(this, "Запись уже есть", Toast.LENGTH_LONG)
+                    Toast.makeText(this, "Запись уже есть", Toast.LENGTH_LONG).show()
         }
         wht.setOnKeyListener(object : View.OnKeyListener {
             override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {

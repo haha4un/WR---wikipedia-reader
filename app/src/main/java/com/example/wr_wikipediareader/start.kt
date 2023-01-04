@@ -1,14 +1,18 @@
 package com.example.wr_wikipediareader
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.database.sqlite.SQLiteDatabase
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+
 
 class start : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
@@ -19,11 +23,18 @@ class start : AppCompatActivity() {
         var help = dbhelp()
 
         var goto: Button = findViewById(R.id.go)
+        var searchView: EditText = findViewById(R.id.Edittxt)
         var spinner: Spinner = findViewById(R.id.spinner)
         spinner.setPrompt("Bookmarks")
 
+
         var  placeadapter = ArrayAdapter(this, R.layout.row,R.id.newS, help.tableToarr(base, "urls"))
         spinner.adapter = placeadapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
+                searchView.setText(adapterView?.getAdapter()?.getItem(i).toString())
+            }override fun onNothingSelected(adapterView: AdapterView<*>?) {}}
 
         goto.setOnClickListener()
         {
@@ -32,7 +43,7 @@ class start : AppCompatActivity() {
             startActivity(i)
         }
 
-        var searchView: EditText = findViewById(R.id.Edittxt)
+
 
         searchView.setOnKeyListener(object : View.OnKeyListener {
             override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
@@ -61,6 +72,10 @@ class start : AppCompatActivity() {
             var  placeadapter = ArrayAdapter(this,R.layout.row,R.id.newS, help.tableToarr(base, "urls"))
             spinner.adapter = placeadapter
         }
+
+        ////////////////////////////////
+        var gor: Button = findViewById(R.id.goriz)
+        gor.setOnClickListener {setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);}
     }
     fun makeIntent(value: String)
     {

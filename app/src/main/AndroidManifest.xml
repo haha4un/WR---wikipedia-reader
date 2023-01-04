@@ -6,16 +6,26 @@
 
     <application
         android:allowBackup="true"
+        android:configChanges="orientation|screenSize"
         android:icon="@mipmap/ic_launcher"
         android:label="WR"
         android:roundIcon="@mipmap/ava"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WRwikipediaReader"
-        android:configChanges="orientation|screenSize">
+        android:theme="@style/Theme.WRwikipediaReader">
+        <activity
+            android:name=".gorizontal_act"
+            android:exported="false"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".start"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
             android:windowSoftInputMode="stateHidden">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,8 +34,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:configChanges="orientation|screenSize"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

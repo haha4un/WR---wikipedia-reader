@@ -34,12 +34,12 @@ class dbhelp {
     {
         var cursor: Cursor = db.rawQuery("SELECT * FROM $table", null)
         var arr = emptyArray<String>()
+        arr += ""
         while(cursor.moveToNext()) {
             arr += cursor.getString(0)
         }
         arr += "https://github.com/haha4un"
         arr += "https://www.google.com/"
-        arr += " "
         return arr
     }
 }

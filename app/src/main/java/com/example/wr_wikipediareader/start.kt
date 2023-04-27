@@ -18,6 +18,7 @@ class start : AppCompatActivity() {
         setContentView(R.layout.activity_start)
         getSupportActionBar()?.hide()
 
+
         var  base: SQLiteDatabase = baseContext.openOrCreateDatabase("urls.db", MODE_PRIVATE, null)
         base.execSQL("CREATE TABLE IF NOT EXISTS urls (url TEXT NOT NULL);")
         var help = dbhelp()
@@ -59,9 +60,7 @@ class start : AppCompatActivity() {
         var searchButton: Button = findViewById(R.id.start_search)
         searchButton.setOnClickListener()
         {
-            var i: Intent = Intent(this, MainActivity::class.java)
-            i.putExtra("tog", "https://www.google.com/search?q=${searchView.text}")
-            startActivity(i)
+            makeIntent(searchView.text.toString())
         }
 
         var del: Button = findViewById(R.id.del)

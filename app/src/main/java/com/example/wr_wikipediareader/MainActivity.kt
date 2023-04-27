@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity() {
         w = findViewById(R.id.web)
         var web: WebView = findViewById(R.id.web)
         web.settings.javaScriptEnabled = true
-//        var ok: Button = findViewById(R.id.ok)
-//        var txt: EditText = findViewById(R.id.what)
 
         try {
             var start = intent.getSerializableExtra("tog").toString()
@@ -54,11 +52,6 @@ class MainActivity : AppCompatActivity() {
         {
             Toast.makeText(this, "$E", Toast.LENGTH_LONG).show()
         }
-//        ok.setOnClickListener()
-//        {
-//            search = txt.text.toString()
-//            goToSearch(search.toString(), web)
-//        }
         back.setOnClickListener()
         {
             if (w?.canGoBack() == true) {
@@ -86,6 +79,7 @@ class MainActivity : AppCompatActivity() {
                 if (keyCode == KeyEvent.KEYCODE_ENTER)
                 {
                     goToSearch(wht.text.toString(), web)
+
                 }
                 return false
             }
